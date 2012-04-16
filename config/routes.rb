@@ -1,4 +1,13 @@
 AgWeb::Application.routes.draw do
+  resources :houses, :only => [:index, :show]
+  
+  
+  
+  
+  scope "/admin" do
+    resources :houses
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
