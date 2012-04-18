@@ -1,0 +1,9 @@
+<div id="navigator" class="span-3">
+  <h4>Admin menu</h4>
+  <ul>    
+    <li><%= link_to "Profilo", current_user  %></li>
+    <% if current_user.admin? %>
+      <li><%= link_to "Users", users_path  %></li>
+    <% end %>
+  </ul>
+</div> 

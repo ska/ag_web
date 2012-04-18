@@ -1,0 +1,25 @@
+body { 
+    text-align:center; /* for IE */ 
+}
+
+div#wrapper { 
+    text-align:left; /* reset text alignment */     
+    margin:0 auto; /* for the rest */ 
+    margin-bottom:1em;
+    border:2px solid #ddd;
+    min-height: 500px;
+    width: 750px;
+}
+div#head{
+    border-bottom: 2px solid #ddd;
+    text-align: center;
+}
+div#navigator{
+    border-right: 2px solid #ddd;
+    min-height: 445px;
+}
+
+
+div.content_center{
+    text-align: center;
+}

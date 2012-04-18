@@ -7,6 +7,9 @@ gem 'rails', '3.2.0'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
+gem 'annotate'
+gem 'thin'
+gem 'quiet_assets', :group => :development
 # Use unicorn as the web server
 # gem 'unicorn'
 
