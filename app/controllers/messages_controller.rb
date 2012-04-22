@@ -1,9 +1,8 @@
 class MessagesController < ApplicationController
   layout 'admin/layout'
   
-  def index
-    @houses = current_user.houses
-    @messages = Message.all
+  def index    
+    @messages = current_user.messages.all
   end
 
   def show
@@ -20,9 +19,12 @@ class MessagesController < ApplicationController
 
   def create
     #@message = @house.messages.new(params[:message])
-    @message = Message.new(params[:message])
+    @house = House.find(params[:message][:house_id])
+    @house.touch
+    
+    @message = @house.messages.new(params[:message])
     if @message.save
-      redirect_to(@message, :notice => 'Message was successfully created.')
+      redirect_to(@message, :success => 'Message was successfully created.')
     else
       render :action => "new"
     end

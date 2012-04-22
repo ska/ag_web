@@ -1,14 +1,27 @@
-<h1>I tuoi messaggi</h1>
+<h1>Listing messages</h1>
 
+<table>
+  <tr>
+    <th>Object</th>
+    <th>Text</th>
+    <th>House</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
-<% @houses.each do |house| %>
-<% unless  house.messages.empty? %>
-<%=  house.titolo %><br />
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.object %></td>
+    <td><%= message.text %></td>
+    <td><%= message.user_id %></td>
+    <td><%= link_to 'Show', message %></td>
+    <td><%= link_to 'Edit', edit_message_path(message) %></td>
+    <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
 <% end %>
-<ul>
-<%   house.messages.each do |mex| %>
-  <li><%=   mex.text %> <%= time_ago_in_words(mex.created_at) %> </li>
-<%   end %>
-</ul>
-<% end %>
+</table>
 
+<br />
+
+<%= link_to 'New Message', new_message_path %>

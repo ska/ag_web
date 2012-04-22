@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120421193008) do
+ActiveRecord::Schema.define(:version => 20120422142736) do
 
   create_table "conditions", :force => true do |t|
     t.string   "name"
@@ -41,9 +41,10 @@ ActiveRecord::Schema.define(:version => 20120421193008) do
   create_table "messages", :force => true do |t|
     t.string   "object"
     t.string   "text"
-    t.integer  "house_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.boolean  "read",       :default => false
   end
 
   create_table "type_of_contracts", :force => true do |t|

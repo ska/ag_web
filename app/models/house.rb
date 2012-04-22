@@ -1,7 +1,8 @@
 class House < ActiveRecord::Base
   belongs_to :user
-  has_many :messages
+  default_scope :order => 'updated_at DESC'
 end
+
 
 
 
@@ -23,5 +24,8 @@ end
 #  n_bathroom           :integer
 #  year_of_construction :integer
 #  user_id              :integer
+#  id_TypeOfContract    :integer
+#  id_Condition         :integer
+#  id_TypeOfHouse       :integer
 #
 
