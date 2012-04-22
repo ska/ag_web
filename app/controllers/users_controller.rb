@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :show]
   before_filter :authenticate_admin, :only => [:index]
-  before_filter :enabled_user, :except => :show
+  before_filter :enabled_user, :except => [:show, :new]
   layout 'admin/layout'
   
   def index    
+    #render :layout => 'admin/layout'
     @users = User.all
   end
   
@@ -13,13 +14,14 @@ class UsersController < ApplicationController
   end
   
   def new
+    #render :layout => 'application'
     @user = User.new
   end
   
   def create
     @user = User.new(params[:user])
     if @user.save 
-      sign_in @user
+      #sign_in @user
       redirect_to users_path, :flash => { :success => "User ok." }
     else      
       flash.now[:error] = "Errore"

@@ -7,36 +7,23 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @message.read = true
+    @message.save    
   end
 
   def new
     @message = Message.new
   end
 
-  def edit
-    @message = Message.find(params[:id])
-  end
-
   def create
-    #@message = @house.messages.new(params[:message])
     @house = House.find(params[:message][:house_id])
-    @house.touch
+    @user = User.find(@house.user_id)
     
-    @message = @house.messages.new(params[:message])
+    @message = @user.messages.new(params[:message])
     if @message.save
-      redirect_to(@message, :success => 'Message was successfully created.')
+      redirect_to(@house, :error => 'Message was successfully created.')
     else
       render :action => "new"
-    end
-  end
-  
-  def update
-    @message = Message.find(params[:id])
-
-    if @message.update_attributes(params[:message])
-      redirect_to(@message, :notice => 'Message was successfully updated.')        
-    else
-      render :action => "edit"       
     end
   end
 

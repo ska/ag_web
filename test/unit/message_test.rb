@@ -7,6 +7,7 @@ class MessageTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: messages
@@ -14,8 +15,12 @@ end
 #  id         :integer         not null, primary key
 #  object     :string(255)
 #  text       :string(255)
-#  house_id   :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
+#  read       :boolean         default(FALSE)
+#  house_id   :integer
+#  name       :string(255)
+#  email      :string(255)
 #
 

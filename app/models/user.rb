@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   require 'digest'
   attr_accessor   :password
   attr_accessible :name, :email, :password, :password_confirmation, :admin, :enabled  
-  has_many :houses,    :dependent => :destroy
-  has_many :messages, :dependent => :destroy
+  has_many :houses
+  has_many :messages
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
   validates :name,  
