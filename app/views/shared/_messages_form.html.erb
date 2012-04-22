@@ -1,0 +1,15 @@
+<%= form_for @message do |f| %>
+<div class="field">
+  <%= f.text_field :object %>
+</div>
+<div class="field">
+  <%= f.text_area :text %>
+</div>
+<div class="field">
+  <%= f.hidden_field :house_id, :value => @house.id %>
+</div>
+
+<div class="action">
+  <%= f.submit "Invia" %>
+</div>
+<% end %>

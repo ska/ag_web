@@ -1,0 +1,16 @@
+<div id="navigator" class="span-4">
+  <h4>Admin menu</h4>
+  <ul>    
+    <li><%= link_to "Profilo", current_user  %></li>
+    
+    <% if current_user.enabled? %>
+      <li><%= link_to "Inserisci casa", new_house_path  %></li>
+      <li><%= link_to "Messaggi", messages_path  %></li>  
+      <li><%= link_to "Le mie case", user_house_path(current_user)  %></li>
+      <li><%= link_to "Tutte le case", houses_path  %></li>      
+      <% if current_user.admin? %>
+        <li><%= link_to "Users", users_path  %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div> 

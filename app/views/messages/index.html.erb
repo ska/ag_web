@@ -1,0 +1,14 @@
+<h1>I tuoi messaggi</h1>
+
+
+<% @houses.each do |house| %>
+<% unless  house.messages.empty? %>
+<%=  house.titolo %><br />
+<% end %>
+<ul>
+<%   house.messages.each do |mex| %>
+  <li><%=   mex.text %> <%= time_ago_in_words(mex.created_at) %> </li>
+<%   end %>
+</ul>
+<% end %>
+

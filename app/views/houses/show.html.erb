@@ -4,12 +4,27 @@
   <b>Titolo:</b>
   <%= @house.titolo %>
 </p>
-
 <p>
   <b>Descrizione:</b>
   <%= @house.descrizione %>
 </p>
-
+<p>
+  <b>town:</b>
+  <%= @house.town %>
+</p>
+<p>
+  <b>postcode:</b>
+  <%= @house.postcode %>
+</p>
+<p>
+  <b>province:</b>
+  <%= @house.province %>
+</p>
+<p>
+  <b>User:</b>
+  <%= @house.user_id %>
+</p>
+<%= render 'shared/messages_form'  %>
 
 <%= link_to 'Edit', edit_house_path(@house) %> |
 <%= link_to 'Back', houses_path %>

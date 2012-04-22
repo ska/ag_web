@@ -2,14 +2,14 @@ class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :show]
   before_filter :authenticate_admin, :only => [:index]
   before_filter :enabled_user, :except => :show
+  layout 'admin/layout'
+  
   def index    
     @users = User.all
-    render :layout => 'admin_layout'
   end
   
   def show
     @user = User.find(params[:id])
-    render :layout => 'admin_layout'
   end
   
   def new
@@ -30,7 +30,6 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
-    render :layout => 'admin_layout'
   end
   
   def update

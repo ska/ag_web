@@ -1,39 +1,56 @@
 class HousesController < ApplicationController
-  # GET /houses
+  layout 'admin/layout'
   def index
     @houses = House.all
   end
-
-  # GET /houses/1
-  def show
-    @house = House.find(params[:id])
+  
+  def user    
+    @user = User.find(params[:id])
+    @houses = @user.houses    
+    render :template => 'houses/index'
   end
 
+  def show
+    @house = House.find(params[:id])
+    @message = Message.new
+  end
+  
+  
+  
+  
+  #----------------------------------------------------------------------------
   # GET /houses/new
   def new
     @house = House.new
   end
-
+  # POST /houses
+  def create     
+    @house = current_user.houses.build(params[:house])
+    if @house.save
+      redirect_to @house, :flash => { :success => "Casa inserita nel database!"}
+    else
+      render 'new'
+    end
+  end
+  #----------------------------------------------------------------------------
   # GET /houses/1/edit
   def edit
     @house = House.find(params[:id])
   end
-
-  # POST /houses
-  def create
-    @house = House.new(params[:house])
-    if @house.save
-      redirect_to @house, :flash => { :success => "Welcome to the Sample App!" }
+  # PUT /houses/1
+  def update
+    @house = House.find(params[:id])
+    if @house.update_attributes(params[:house])
+      redirect_to @house, :flash => { :success => "Modifica avvenuta con successo!"}
     else
       render 'new'
     end
   end
 
-  # PUT /houses/1
-  def update
-    @house = House.find(params[:id])
-  end
-
+  
+  
+  
+  
   # DELETE /houses/1
   def destroy
     @house = House.find(params[:id])

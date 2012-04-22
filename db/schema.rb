@@ -11,13 +11,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417164039) do
+ActiveRecord::Schema.define(:version => 20120421193008) do
+
+  create_table "conditions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "houses", :force => true do |t|
     t.string   "titolo"
     t.string   "descrizione"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "town"
+    t.string   "postcode"
+    t.string   "province"
+    t.integer  "total_sqm"
+    t.integer  "n_total_room"
+    t.integer  "n_bedroom"
+    t.integer  "n_bathroom"
+    t.integer  "year_of_construction"
+    t.integer  "user_id"
+    t.integer  "id_TypeOfContract"
+    t.integer  "id_Condition"
+    t.integer  "id_TypeOfHouse"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "object"
+    t.string   "text"
+    t.integer  "house_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "type_of_contracts", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "type_of_houses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

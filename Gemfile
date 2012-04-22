@@ -1,15 +1,23 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.0'
-
+#gem 'rails', '3.2.0'
+gem 'rails', '3.0.11'
+gem 'railties', '3.0.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'client_side_validations'
+
+gem 'jquery-rails'
 
 gem 'annotate'
 gem 'thin'
-gem 'quiet_assets', :group => :development
+#gem 'quiet_assets', :group => :development
+
+
+gem 'rmagick', '2.13.1', :require => 'RMagick'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

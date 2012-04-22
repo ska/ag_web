@@ -1,25 +1,24 @@
-<h1>Listing houses</h1>
-
-<table>
-  <tr>
-    <th>Titolo</th>
-    <th>Descrizione</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @houses.each do |house| %>
-  <tr>
-    <td><%= house.titolo %></td>
-    <td><%= house.descrizione %></td>
-    <td><%= link_to 'Show', house %></td>
-    <td><%= link_to 'Edit', edit_house_path(house) %></td>
-    <td><%= link_to 'Destroy', house, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<h1>Elenco completo case</h1>
+<% if @houses.empty? %>
+  L'utente <%= @user.name %> non ha inserito nessuna casa.
+<% else %>
+  <table>
+    <tr>
+      <th>Titolo</th>
+      <th>Descrizione</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  <% @houses.each do |house| %>
+    <tr>
+      <td><%= house.titolo %></td>
+      <td><%= house.descrizione %></td>
+      <td><%= link_to 'Show', house %></td>
+      <td><%= link_to 'Edit', edit_house_path(house) %></td>
+      <td><%= link_to 'Destroy', house, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </table>
 <% end %>
-</table>
-
 <br />
-
-<%= link_to 'New House', new_house_path %>

@@ -1,16 +1,18 @@
 AgWeb::Application.routes.draw do
-  root :to => "houses#index"
-  
-  
-  
-  
   
   scope "/admin" do
-    root :to => "sessions#new"
+    root :to => "sessions#new"    
     match '/signout', :to => 'sessions#destroy'
-    match '/signin', :to => 'sessions#new'
-    resources :houses, :users
+    match '/signin', :to => 'sessions#new'    
+    resources :users    
     resources :sessions, :only => [:new, :create, :destroy]
+    resources :messages
+    resources :houses do
+      member do 
+        get :user
+      end
+    
+    end
   end
 
   # The priority is based upon order of creation:
