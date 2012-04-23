@@ -32,10 +32,11 @@ module SessionsHelper
   
   def deny_access
     store_location
-    redirect_to signin_path, :notice => "Please sign in to access this page."
+    redirect_to signin_path, :notice => "Perfavore effettua il login per visualizzare la pagina"
   end
 
   def authenticate_admin
+    authenticate
     deny_access_noadmin unless current_user.admin?
   end
  
@@ -44,6 +45,7 @@ module SessionsHelper
   end
   
   def enabled_user
+    authenticate
     deny_access_noenabled unless current_user.enabled?
   end
  

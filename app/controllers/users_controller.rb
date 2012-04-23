@@ -6,8 +6,9 @@ class UsersController < ApplicationController
   
   ##--------------- NESSUN FILTRO ---------------##
   def new
+    @title = "Registrazione utente"
     @user = User.new
-    render :layout => 'application'
+    render :layout => 'admin/layout_hosidebar'
   end
   
   def create   
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save 
       sign_in @user
-      redirect_to @user, :flash => { :success => "User ok." }
+      redirect_to @user, :flash => { :success => "Registrazione utente avvenuta con successo." }
     else      
       flash.now[:error] = "Errore"
       render 'new'
@@ -24,18 +25,18 @@ class UsersController < ApplicationController
   end
   
   ##--------------- FILTRO ADMIN ---------------##
-  def index    
-    #render :layout => 'admin/layout'
+  def index
+    @title = "Lista completa utenti"
     @users = User.all
   end
   
   def admin_edit
     @user = User.find(params[:id])
+    @title = "Abilitazione utente #{@user}"
   end
   
   def admin_update
-    @user = User.find(params[:id])
-    
+    @user = User.find(params[:id])    
     if @user.update_attributes(params[:user])
       redirect_to users_path, :flash => { :success => "Profile updated." }
     else
@@ -46,6 +47,7 @@ class UsersController < ApplicationController
   ##--------------- FILTRO ENABLED ---------------##
   def edit
     @user = User.find(params[:id])
+    @title = "Modifica utente #{@user}"
   end
   
   def update    

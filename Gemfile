@@ -8,15 +8,23 @@ gem 'railties', '3.0.11'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'client_side_validations'
-
 gem 'jquery-rails'
-
 gem 'annotate'
 gem 'thin'
-#gem 'quiet_assets', :group => :development
-
-
 gem 'rmagick', '2.13.1', :require => 'RMagick'
+
+group :test do
+  gem 'rspec-rails', '2.6.1'
+  gem 'rspec'
+  #gem 'webrat', '0.7.1'
+  #gem 'spork', '0.9.0.rc8'
+  #gem 'factory_girl_rails', '1.0'
+  gem 'autotest', '4.4.6'
+  gem 'autotest-rails-pure', '4.1.2'
+  # gem 'autotest-fsevent', '0.2.4'
+  # gem 'autotest-growl', '0.2.9'
+end
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

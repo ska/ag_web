@@ -12,9 +12,8 @@
     <%= link_to "Logout", signout_path, :method => :delete %>
   <% end %>
   <div id="wrapper" >
-    <%= render 'layouts/admin/header' %> 
-    <%= render 'layouts/admin/navmenu' %> 
-    <div id="contenent" class="span-13">
+    <%= render 'layouts/admin/header' %>
+    <div id="contenent">
       <% flash.each do |key, value| %>
         <div class="flash <%= key %> "><%= value %></div>
       <% end %>         
