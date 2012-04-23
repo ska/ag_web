@@ -10,8 +10,8 @@
     <th>Admin: <%= user.admin %></th>
   </tr> 
   <tr>
-    <td><%= link_to 'Permessi', admin_edit_user_path(user) %></td>
-    <td><%= link_to "Le sue case", user_house_path(user)  %></td>
+    <td><%= link_to 'Permessi', edit_permission_admin_user_path(user) %></td>
+    <td><%= link_to "Le sue case", user_admin_house_path(user)  %></td>
     <td></td>
     <td></td>
   </tr>  
@@ -22,5 +22,5 @@
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_admin_user_path %>
 

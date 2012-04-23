@@ -11,9 +11,9 @@
     <tr>
       <td><%= house.titolo %></td>
       <td><%= house.descrizione %></td>
-      <td><%= link_to 'Show', house %></td>
-      <td><%= link_to 'Edit', edit_house_path(house) %></td>
-      <td><%= link_to 'Destroy', house, confirm: 'Are you sure?', method: :delete %></td>
+      <td><%= link_to 'Show', admin_house_path(house) %></td>
+      <td><%= link_to 'Edit', edit_admin_house_path(house) %></td>
+      
     </tr>
   <% end %>
   </table>

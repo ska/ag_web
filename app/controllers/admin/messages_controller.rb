@@ -1,4 +1,4 @@
-class MessagesController < ApplicationController
+class Admin::MessagesController < ApplicationController
   layout 'admin/layout'
   
   def index    
@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
     
     @message = @user.messages.new(params[:message])
     if @message.save
-      redirect_to(@house, :error => 'Message was successfully created.')
+      redirect_to(admin_houses_path(@house), :error => 'Message was successfully created.')
     else
       render :action => "new"
     end

@@ -32,12 +32,11 @@ module SessionsHelper
   
   def deny_access
     store_location
-    redirect_to signin_path, :notice => "Perfavore effettua il login per visualizzare la pagina"
+    redirect_to admin_signin_path, :notice => "Perfavore effettua il login per visualizzare la pagina"
   end
 
   def authenticate_admin
-    authenticate
-    deny_access_noadmin unless current_user.admin?
+    deny_access_noadmin unless current_user.admin?        
   end
  
   def deny_access_noadmin    
@@ -50,7 +49,7 @@ module SessionsHelper
   end
  
   def deny_access_noenabled    
-    redirect_to current_user, :notice => "Utente non abilitato."
+    redirect_to current_user, :notice => "Utente non abilitato. Attendi l'abilitazione da parte di un amministratore."
   end
   
   def redirect_back_or(default)

@@ -1,6 +1,6 @@
 <div class="content_center">
   <h1>Login Utente</h1>
-  <%= form_for(:session, :url => sessions_path) do |f| %>  
+  <%= form_for(:session, :url => admin_sessions_path) do |f| %>  
     <div class="field">
       <%= f.label :email %><br />
       <%= f.text_field :email %>
@@ -13,5 +13,5 @@
       <%= f.submit %>
     </div> 
   <% end %>
-  <%= link_to "Registrati qui", new_user_path %>
+  <%= link_to "Registrati qui", new_admin_user_path %>
 </div>

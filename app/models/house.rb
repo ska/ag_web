@@ -2,6 +2,61 @@ class House < ActiveRecord::Base
   belongs_to :user
   has_many :messages
   default_scope :order => 'updated_at DESC'
+  
+  validates :titolo,  
+            :presence => true,
+            :length   => { :maximum => 100 }
+          
+  validates :descrizione,  
+            :presence => true,
+            :length   => { :within => 40..1000 }
+          
+  validates :town,  
+            :presence => true,
+            :length   => { :within => 3..40 }
+          
+  validates :postcode,  
+            :presence => true,
+            :length   => { :within => 5..5 },
+            :numericality => true
+          
+  validates :total_sqm,  
+            :presence => true,
+            :length   => { :within => 2..4 },
+            :numericality => true
+  
+  validates :n_total_room,  
+            :presence => true,
+            :length   => { :within => 1..3 },
+            :numericality => true
+  
+  validates :n_bedroom,  
+            :presence => true,
+            :length   => { :within => 1..3 },
+            :numericality => true
+  
+  validates :n_bathroom,  
+            :presence => true,
+            :length   => { :within => 1..3 },
+            :numericality => true
+  
+  validates :year_of_construction,  
+            :presence => true,
+            :length   => { :within => 4..4 },
+            :numericality => true
+  
+  validates :id_TypeOfHouse,  
+            :presence => true,
+            :numericality => true
+  
+  validates :id_TypeOfContract,  
+            :presence => true,
+            :numericality => true
+  
+  validates :id_Condition,  
+            :presence => true,
+            :numericality => true
+  
 end
 
 

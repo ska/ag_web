@@ -1,12 +1,31 @@
 AgWeb::Application.routes.draw do
   
-  scope "/admin" do
+  namespace :admin do
     root :to => "sessions#new"    
     match '/signout', :to => 'sessions#destroy'
-    match '/signin', :to => 'sessions#new'    
-      
+    match '/signin', :to => 'sessions#new'   
+    
+    resources :users do
+      member do
+        get :edit_permission
+        put :update_permission
+      end
+    end
+    
     resources :sessions, :only => [:new, :create, :destroy]
-    resources :messages
+    resources :messages, :except => [:edit, :update]
+    
+    resources :settings, :only => [:index] do
+      collection do        
+        get :new_contract
+        post :save_contract     
+        get :new_house
+        post :save_house  
+        get :new_condition
+        post :save_condition
+      end
+    end
+    
     
     resources :houses do
       member do 
@@ -14,12 +33,6 @@ AgWeb::Application.routes.draw do
       end
     end
     
-    resources :users   do
-      member do
-        get :admin_edit
-        put :admin_update
-      end
-    end
     
   end
 

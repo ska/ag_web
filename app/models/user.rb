@@ -25,8 +25,10 @@ class User < ActiveRecord::Base
             :length   => { :within => 6..40 }, 
             :on => :create          
           
-  before_create :encrypt_password  
+  before_create :encrypt_password
+  
 ####----------------------------------------------------------------------------
+  
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
   end

@@ -9,7 +9,7 @@
 <body>
   <% if signed_in? %>
     <%=  current_user.email %> 
-    <%= link_to "Logout", signout_path, :method => :delete %>
+    <%= link_to "Logout", admin_signout_path, :method => :delete %>
   <% end %>
   <div id="wrapper" >
     <%= render 'layouts/admin/header' %> 

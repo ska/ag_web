@@ -1,4 +1,4 @@
-<div class="content_center">
+<div class="">
 <h1>New user</h1>
 <%= form_for @user, :validate => true  do |f| %>
   <% if @user.errors.any? %>
@@ -11,7 +11,7 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -33,5 +33,5 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', root_path %>
 </div>

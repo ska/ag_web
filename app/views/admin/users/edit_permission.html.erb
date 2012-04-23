@@ -1,6 +1,6 @@
 <h1>Admin Editing <%=  @user.name %></h1>
 
-<%= form_for @user, :url => url_for(:controller => 'users', :action => 'admin_update') do |f| %>
+<%= form_for [:admin, @user], :url => url_for(:controller => 'users', :action => 'update_permission') do |f| %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -24,5 +24,5 @@
 
 
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Show', admin_user_path(@user) %> |
+<%= link_to 'Back', admin_users_path %>

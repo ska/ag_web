@@ -1,0 +1,28 @@
+<h1>Elenco impostazioni</h1>
+
+<h3>Elenco tipi di contratto</h3>
+<ul>
+  <% @types_of_contract.each do |contract| %>
+    <li><%= contract.name %></li> 
+  <% end %>
+</ul>
+<%= link_to "Nuovo", :controller => 'admin/settings', :action => 'new_contract' %>
+<hr>
+
+<h3>Elenco tipi di contratto</h3>
+<ul>
+  <% @types_of_house.each do |house| %>
+    <li><%= house.name %></li>  
+  <% end %>
+</ul>
+<%= link_to "Nuovo", :controller => 'admin/settings', :action => 'new_house' %>
+<hr>
+
+<h3>Elenco condizioni case</h3>
+<ul>
+  <% @conditions.each do |condition| %>
+    <li><%= condition.name %></li>  
+  <% end %>
+</ul>
+<%= link_to "Nuovo", :controller => 'admin/settings', :action => 'new_condition' %>
+<hr>

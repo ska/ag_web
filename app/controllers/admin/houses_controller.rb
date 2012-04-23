@@ -1,4 +1,4 @@
-class HousesController < ApplicationController
+class Admin::HousesController < ApplicationController
   layout 'admin/layout'
   def index
     @houses = House.all
@@ -7,7 +7,7 @@ class HousesController < ApplicationController
   def user    
     @user = User.find(params[:id])
     @houses = @user.houses    
-    render :template => 'houses/index'
+    render :template => 'admin/houses/index'
   end
 
   def show
@@ -27,7 +27,7 @@ class HousesController < ApplicationController
   def create     
     @house = current_user.houses.build(params[:house])
     if @house.save
-      redirect_to @house, :flash => { :success => "Casa inserita nel database!"}
+      redirect_to admin_houses_path(@house), :flash => { :success => "Casa inserita nel database!"}
     else
       render 'new'
     end

@@ -1,0 +1,10 @@
+<%= form_for @condition, :url => url_for(:controller => 'admin/settings', :action => 'save_condition') do |f| %>
+<h3>Nuova condizione casa</h3>
+<div class="field">
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+</div>
+<div class="action">
+  <%= f.submit "Invia" %>
+</div>
+<% end %>

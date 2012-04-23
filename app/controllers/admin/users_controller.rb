@@ -1,7 +1,8 @@
-class UsersController < ApplicationController
-  before_filter :authenticate, :only => [ :show ]
-  before_filter :authenticate_admin, :only => [:index, :admin_edit, :admin_update]
-  before_filter :enabled_user, :only => [:edit, :update]
+class Admin::UsersController < ApplicationController
+  before_filter :authenticate, :except => [ :new, :create ]
+  before_filter :enabled_user, :only => [ :edit, :update ]
+  before_filter :authenticate_admin, :only => [ :index, :admin_edit, :admin_update ]
+  
   layout 'admin/layout'
   
   ##--------------- NESSUN FILTRO ---------------##
@@ -30,15 +31,15 @@ class UsersController < ApplicationController
     @users = User.all
   end
   
-  def admin_edit
+  def edit_permission
     @user = User.find(params[:id])
     @title = "Abilitazione utente #{@user}"
   end
   
-  def admin_update
+  def update_permission
     @user = User.find(params[:id])    
     if @user.update_attributes(params[:user])
-      redirect_to users_path, :flash => { :success => "Profile updated." }
+      redirect_to admin_users_path, :flash => { :success => "Profile updated." }
     else
       render 'edit' #, :layout => 'admin_layout'      
     end
@@ -56,7 +57,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user])
-      redirect_to users_path, :flash => { :success => "Profile updated." }
+      redirect_to admin_user_path(@user), :flash => { :success => "Profile updated." }
     else
       render 'edit' #, :layout => 'admin_layout'      
     end
@@ -67,6 +68,5 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])    
   end
-  
   
 end

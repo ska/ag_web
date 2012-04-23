@@ -1,21 +1,25 @@
 <div id="navigator" class="span-5">
   <h3>Men&ugrave;</h3>
   <ul>    
-    <li><%= link_to "Profilo", current_user  %></li>
-    <ul><li><%= link_to 'Modifica profilo', edit_user_path(current_user) %></li></ul>    
+    <li><%= link_to "Profilo", admin_user_path(current_user)  %></li>
     <% if current_user.enabled? %>
-      <li><%= link_to "Inserisci casa", new_house_path  %></li>
-      <li><%= link_to "Messaggi", messages_path  %></li>  
-      <li><%= link_to "Le mie case", user_house_path(current_user)  %></li>
-      <li><%= link_to "Tutte le case", houses_path  %></li>            
+      <ul>
+        <li><%= link_to 'Modifica profilo', edit_admin_user_path(current_user) %></li>
+      </ul>
+    <% end %>
+    <% if current_user.enabled? %>
+      <li><%= link_to "Inserisci casa", new_admin_house_path  %></li>
+      <li><%= link_to "Messaggi", admin_messages_path  %></li>  
+      <li><%= link_to "Le mie case", user_admin_house_path(current_user)  %></li>
+      <li><%= link_to "Tutte le case", admin_houses_path  %></li>            
     <% end %>
   </ul>
+  
   <% if current_user.admin? %>
-  <h3>Men&ugrave; Amministratori</h3>
+    <h3>Men&ugrave; Amministratori</h3>
     <ul>
-      <li><%= link_to "Users", users_path  %></li>
+      <li><%= link_to "Tutti gli utenti", admin_users_path  %></li>
+      <li><%= link_to "Impostazioni", admin_settings_path %></li>
     </ul>
   <% end %>
-  
-  
 </div> 
