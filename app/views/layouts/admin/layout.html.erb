@@ -14,14 +14,14 @@
   <div id="wrapper" >
     <%= render 'layouts/admin/header' %> 
     <%= render 'layouts/admin/navmenu' %> 
-      <div id="contenent" class="span-14">
-        <% flash.each do |key, value| %>
-          <div class="flash <%= key %> "><%= value %></div>
-        <% end %>         
-        <%= yield %>
-      </div>    
-      <br clear="all"/>
-    </div> 
+    <div id="contenent" class="span-13">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %> "><%= value %></div>
+      <% end %>         
+      <%= yield %>
+    </div>    
+    <br clear="all"/>
+  </div> 
     <br clear="all"/>
     <%= render 'layouts/admin/footer' %>
     

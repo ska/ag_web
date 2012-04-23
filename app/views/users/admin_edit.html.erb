@@ -1,0 +1,28 @@
+<h1>Admin Editing <%=  @user.name %></h1>
+
+<%= form_for @user, :url => url_for(:controller => 'users', :action => 'admin_update') do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :admin %><br />
+    <%= f.check_box :admin %>
+  </div>
+  <div class="field">
+    <%= f.label :enabled %><br />
+    <%= f.check_box :enabled %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

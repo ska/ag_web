@@ -1,9 +1,13 @@
 class User < ActiveRecord::Base
   require 'digest'
   attr_accessor   :password
-  attr_accessible :name, :email, :password, :password_confirmation, :admin, :enabled  
+  attr_accessible :name, :email, :password, :password_confirmation, :admin, :enabled   
   has_many :houses
   has_many :messages
+  
+  
+  
+  
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
   validates :name,  
@@ -19,9 +23,9 @@ class User < ActiveRecord::Base
             :presence   => true,
             :confirmation => true,
             :length   => { :within => 6..40 }, 
-            :on => :create
+            :on => :create          
           
-  before_save :encrypt_password  
+  before_create :encrypt_password  
 ####----------------------------------------------------------------------------
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
@@ -39,6 +43,7 @@ class User < ActiveRecord::Base
   end
 
   private  
+    
     def encrypt_password
       self.salt = make_salt unless has_password?(password)
       self.encrypted_password = encrypt(password)

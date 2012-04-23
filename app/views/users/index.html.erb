@@ -1,27 +1,22 @@
 <h1>Listing Users</h1>
 
 <table>
-  <tr>
-    <th>Nome</th>
-    <th>Mail</th>
-    <th></th>
-    <th>Abilitato</th>
-    <th>Admin</th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td></td>
-    <td><%= user.enabled %></td>
-    <td><%= user.admin %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <th><%= user.name %></th>
+    <th><%= user.email %></th>
+    <th>Abilitato: <%= user.enabled %></th>
+    <th>Admin: <%= user.admin %></th>
+  </tr> 
+  <tr>
+    <td><%= link_to 'Permessi', admin_edit_user_path(user) %></td>
     <td><%= link_to "Le sue case", user_house_path(user)  %></td>
+    <td></td>
+    <td></td>
+  </tr>  
     
-  </tr>
+  
 <% end %>
 </table>
 
