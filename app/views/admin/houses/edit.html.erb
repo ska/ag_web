@@ -1,5 +1,5 @@
 <h1>Editing house</h1>
-<%= form_for @house do |f| %>
+<%= form_for [:admin, @house], :validate => true do |f| %>
   <% if @house.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@house.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :descrizione %><br />
-    <%= f.text_field :descrizione %>
+    <%= f.text_area :descrizione %>
   </div>
   <div class="field">
     <%= f.label :town %><br />
@@ -68,5 +68,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Show', @house %> |
-<%= link_to 'Back', houses_path %>
+<%= link_to 'Back', admin_houses_path %>

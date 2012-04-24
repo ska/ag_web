@@ -12,6 +12,9 @@ gem 'jquery-rails'
 gem 'annotate'
 gem 'thin'
 gem 'rmagick', '2.13.1', :require => 'RMagick'
+gem 'carrierwave'
+#gem 'mysql2', '~> 0.2.11'
+
 
 group :test do
   gem 'rspec-rails', '2.6.1'

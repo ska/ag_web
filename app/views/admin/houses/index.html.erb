@@ -2,18 +2,26 @@
   <table>
     <tr>
       <th>Titolo</th>
-      <th>Descrizione</th>
+      <th>Immagini</th>
+      <th>Utente</th>
       <th></th>
       <th></th>
       <th></th>
     </tr>
   <% @houses.each do |house| %>
-    <tr>
+    <tr class="<%= cycle("even", "odd") %>">
       <td><%= house.titolo %></td>
-      <td><%= house.descrizione %></td>
-      <td><%= link_to 'Show', admin_house_path(house) %></td>
-      <td><%= link_to 'Edit', edit_admin_house_path(house) %></td>
-      
+      <td><%=  house.images.size %></td>
+      <td><%= house.user.name %> </td>
+      <td><%= link_to  "Vedi", admin_house_path(house) %> </td>
+      <td><%= link_to  "Modifica", edit_admin_house_path(house) if current_user.admin?%> </td>
+      <td>
+        <% if current_user.admin? %>
+          <%=link_to admin_house_path(house),:method => :delete do %>
+            <%='Elimina'%>
+          <% end %>
+        <%end %>
+      </td>
     </tr>
   <% end %>
   </table>

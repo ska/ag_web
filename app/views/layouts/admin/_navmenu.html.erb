@@ -1,20 +1,22 @@
 <div id="navigator" class="span-5">
   <h3>Men&ugrave;</h3>
   <ul>    
-    <li><%= link_to "Profilo", admin_user_path(current_user)  %></li>
+    <li><b><%=  current_user.email %></b></li>       
+    <ul>
+        <li><%= link_to "Profilo", admin_user_path(current_user)  %></li>
+        <% if current_user.enabled? %>
+          <li><%= link_to 'Modifica profilo', edit_admin_user_path(current_user) %></li>
+        <% end %>
+        <li><%= link_to "Logout", admin_signout_path %>
+    </ul>      
     <% if current_user.enabled? %>
-      <ul>
-        <li><%= link_to 'Modifica profilo', edit_admin_user_path(current_user) %></li>
-      </ul>
-    <% end %>
-    <% if current_user.enabled? %>
+      <li><%= link_to "Tutte le case", admin_houses_path  %></li> 
+      <li><%= link_to "Le mie case", user_admin_house_path(current_user)  %></li>
       <li><%= link_to "Inserisci casa", new_admin_house_path  %></li>
       <li><%= link_to "Messaggi", admin_messages_path  %></li>  
-      <li><%= link_to "Le mie case", user_admin_house_path(current_user)  %></li>
-      <li><%= link_to "Tutte le case", admin_houses_path  %></li>            
+                 
     <% end %>
   </ul>
-  
   <% if current_user.admin? %>
     <h3>Men&ugrave; Amministratori</h3>
     <ul>

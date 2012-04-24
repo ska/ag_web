@@ -40,22 +40,21 @@ module SessionsHelper
   end
  
   def deny_access_noadmin    
-    redirect_to current_user, :notice => "Non sei autorizzato a visitare questa area."
+    redirect_to admin_user_path(current_user), :notice => "Non sei autorizzato a visitare questa area."
   end
   
   def enabled_user
-    authenticate
     deny_access_noenabled unless current_user.enabled?
   end
  
   def deny_access_noenabled    
-    redirect_to current_user, :notice => "Utente non abilitato. Attendi l'abilitazione da parte di un amministratore."
+    redirect_to admin_user_path(current_user), :notice => "Utente non abilitato. Attendi l'abilitazione da parte di un amministratore."
   end
   
-  def redirect_back_or(default)
-    redirect_to(session[:return_to] || default)
-    clear_return_to
-  end
+#  def redirect_back_or(default)
+#    redirect_to(session[:return_to] || default)
+#    clear_return_to
+#  end
   
   private
 

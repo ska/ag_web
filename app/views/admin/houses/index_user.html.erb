@@ -1,0 +1,26 @@
+<h1>Elenco completo case</h1>
+  <table>
+    <tr>
+      <th>Titolo</th>
+      <th>Immagini</th>
+      <th>Utente</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  <% @houses.each do |house| %>
+    <tr class="<%= cycle("even", "odd") %>">
+      <td><%= house.titolo %></td>
+      <td><%=  house.images.size %></td>
+      <td><%= house.user.name %> </td>
+      <td><%= link_to  "Vedi", admin_house_path(house) %> </td>
+      <td><%= link_to  "Modifica", edit_admin_house_path(house) %> </td>
+      <td>
+        <%=link_to admin_house_path(house),:method => :delete do %>
+          <%='Elimina'%>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<br />

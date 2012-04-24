@@ -1,5 +1,4 @@
-AgWeb::Application.routes.draw do
-  
+AgWeb::Application.routes.draw do 
   namespace :admin do
     root :to => "sessions#new"    
     match '/signout', :to => 'sessions#destroy'
@@ -12,6 +11,7 @@ AgWeb::Application.routes.draw do
       end
     end
     
+    resources :images    
     resources :sessions, :only => [:new, :create, :destroy]
     resources :messages, :except => [:edit, :update]
     
@@ -25,15 +25,12 @@ AgWeb::Application.routes.draw do
         post :save_condition
       end
     end
-    
-    
+        
     resources :houses do
       member do 
         get :user
       end
-    end
-    
-    
+    end        
   end
 
   # The priority is based upon order of creation:

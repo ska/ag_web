@@ -24,7 +24,31 @@
   <b>User:</b>
   <%= @house.user_id %>
 </p>
+
+
+<% for image in @house.images %>  
+  <%= image_tag image.image_url(:thumb).to_s %>   
+  <%=link_to admin_image_path(image),:method => :delete do %>
+    <%='Delete'%>
+  <% end %>
+<% end %>
+
+
+
+
+<br /><br /><br /><br /><br />
+
 <%= render 'admin/messages/messages_form'  %>
 
-<%= link_to 'Edit', edit_admin_house_path(@house) %> |
-<%= link_to 'Back', admin_houses_path %>
+<%= link_to 'Indietro', admin_houses_path %>
+
+<% if current_user.admin || current_user == @house.user %>
+  &nbsp;|&nbsp;
+  <%= link_to 'Modifica casa', edit_admin_house_path(@house) %>
+  &nbsp;|&nbsp;
+  <%= link_to 'Aggiungi Immagine', new_admin_image_path(:house_id => @house) %>
+  &nbsp;|&nbsp;
+  <%=link_to admin_house_path(@house),:method => :delete do %>
+    <%='Elimina casa'%>
+  <% end %>
+<% end %>

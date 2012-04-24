@@ -18,7 +18,7 @@ class Admin::UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save 
       sign_in @user
-      redirect_to @user, :flash => { :success => "Registrazione utente avvenuta con successo." }
+      redirect_to admin_user_path(@user), :flash => { :success => "Registrazione utente avvenuta con successo." }
     else      
       flash.now[:error] = "Errore"
       render 'new'
@@ -39,7 +39,7 @@ class Admin::UsersController < ApplicationController
   def update_permission
     @user = User.find(params[:id])    
     if @user.update_attributes(params[:user])
-      redirect_to admin_users_path, :flash => { :success => "Profile updated." }
+      redirect_to admin_users_path, :flash => { :success => "Profilo aggiornato." }
     else
       render 'edit' #, :layout => 'admin_layout'      
     end
@@ -57,14 +57,13 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user])
-      redirect_to admin_user_path(@user), :flash => { :success => "Profile updated." }
+      redirect_to admin_user_path(@user), :flash => { :success => "Profilo aggiornato." }
     else
       render 'edit' #, :layout => 'admin_layout'      
     end
   end
   
   ##--------------- FILTRO AUTHENTICATE ---------------##
-  
   def show
     @user = User.find(params[:id])    
   end

@@ -1,0 +1,23 @@
+
+<%= form_for [:admin,@image], :html => {:multipart => true } do |f| %>
+
+
+
+
+
+  <%= f.hidden_field :house_id %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.label :remote_image_url %><br />
+    <%= f.text_field :remote_image_url %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+

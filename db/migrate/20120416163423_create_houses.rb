@@ -1,5 +1,5 @@
 class CreateHouses < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :houses do |t|
       t.string :titolo
       t.string :descrizione
@@ -7,4 +7,9 @@ class CreateHouses < ActiveRecord::Migration
       t.timestamps
     end
   end
+  
+  def self.down
+    drop_table :houses
+  end
+  
 end
