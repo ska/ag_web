@@ -1,0 +1,17 @@
+<h2>Ultime case inserite</h2>
+<table>
+  
+  <% @houses.each do |house| %>
+  <tr class="<%= cycle("even", "odd") %>">
+    <td colspan="2"><b><%= house.titolo %></b></td>
+  </tr>
+  <tr class="<%= cycle("even", "odd") %>">
+    <td style="width: 140px; height: 105px;"><%= image_tag house.images.first.image_url(:thumb).to_s unless house.images.first.nil? %> </td>
+    <td>
+      <div class="descrizione"><%= house.descrizione %></div>              
+    </td>
+  </tr>
+  <tr><td></td><td><b>prezzo | <%= house.total_sqm %> m2 | <%= house.n_total_room %> locali | </b></td></tr>
+  <% end %>
+</table>
+<br clear="all" />

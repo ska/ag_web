@@ -1,6 +1,7 @@
 <h1>Elenco completo case</h1>
   <table>
     <tr>
+      <th></th>
       <th>Titolo</th>
       <th>Immagini</th>
       <th>Utente</th>
@@ -10,6 +11,7 @@
     </tr>
   <% @houses.each do |house| %>
     <tr class="<%= cycle("even", "odd") %>">
+      <td><%= image_tag house.images.first.image_url(:thumb).to_s unless house.images.first.nil? %> </td>
       <td><%= house.titolo %></td>
       <td><%=  house.images.size %></td>
       <td><%= house.user.name %> </td>
