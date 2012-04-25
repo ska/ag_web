@@ -17,13 +17,18 @@
   </div>
     <div id="content_top">
 
-    <div id="main_content">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %> "><%= value %></div>
-      <% end %>
-      <%= yield %>       
-    </div>
-    <br clear="all" />
+      <div style="width: 170px; background: #ddd; float: left; border: 2px solid silver;">
+        <h3>Cerca</h3>
+      </div>
+      
+      
+      <div id="main_content">
+        <% flash.each do |key, value| %>
+          <div class="flash <%= key %> "><%= value %></div>
+        <% end %>
+        <%= yield %>       
+      </div>
+      <br clear="all" />
 
     </div>
   <div id="fotter">

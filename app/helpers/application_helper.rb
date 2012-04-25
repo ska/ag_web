@@ -7,4 +7,9 @@ module ApplicationHelper
       "#{base_title} - #{@title}"
     end
   end
+  
+  def casa_default
+    image_tag("thumb_casa.gif", :alt => "default image")
+  end
+  
 end

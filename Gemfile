@@ -13,6 +13,7 @@ gem 'annotate'
 gem 'thin'
 gem 'rmagick', '2.13.1', :require => 'RMagick'
 gem 'carrierwave'
+gem 'will_paginate', '3.0.2'
 #gem 'mysql2', '~> 0.2.11'
 
 
