@@ -1,12 +1,12 @@
 <h2>Modifica profilo <%=  @user.name %></h2>
-
-<%= form_for [:admin, @user], :validate  do |f| %>
+<%= form_for [:admin, @user], :validate => true do |f| %>
+<%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
-    <%= f.label :name, "Nome e cognome:" %><br />
+    <%= f.label "Nome e cognome:" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :email, "E-mail:" %><br />
+    <%= f.label "E-mail:" %><br />
     <%= f.text_field :email %>
   </div>
   <div class="actions">

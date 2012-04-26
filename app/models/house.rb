@@ -6,58 +6,66 @@ class House < ActiveRecord::Base
   default_scope :order => 'updated_at DESC'
   
   validates :titolo,  
-            :presence => true,
-            :length   => { :maximum => 100 }
+            :presence => { :message => "Non puo' essere vuoto."},
+            :length   => { :maximum => 100, :too_long => "Troppo lungo." }
           
   validates :descrizione,  
-            :presence => true,
-            :length   => { :within => 40..1000 }
+            :presence => { :message => "Non puo' essere vuoto."},
+            :length   => { :within => 40..1000, :too_long => "Troppo lungo.", :too_short => "Troppo corto." }
           
   validates :town,  
-            :presence => true,
-            :length   => { :within => 3..40 }
+            :presence => { :message => "Non puo' essere vuoto."},
+            :length   => { :within => 3..40, :too_long => "Troppo lungo.", :too_short => "Troppo corto." }
+          
+  validates :province,  
+            :presence => { :message => "Non puo' essere vuoto."},
+            :length   => { :within => 2..2, :too_long => "Inserire la sigla della provincia es. 'VE'", :too_short => "Inserire la sigla della provincia es. 'VE'" }
           
   validates :postcode,  
-            :presence => true,
-            :length   => { :within => 5..5 },
-            :numericality => true
+            :presence => { :message => "Non puo' essere vuoto."},
+            :length   => { :within => 5..5, :too_long => "Troppo lungo.", :too_short => "Troppo corto." },
+            :numericality => { :message => "Deve essere un numero."}
           
   validates :total_sqm,  
-            :presence => true,
-            :length   => { :within => 2..4 },
-            :numericality => true
+            :presence => { :message => "Non puo' essere vuoto."},
+            :length   => { :within => 2..4, :too_long => "Troppo lungo.", :too_short => "Troppo corto." },
+            :numericality => { :message => "Deve essere un numero."}
   
   validates :n_total_room,  
-            :presence => true,
-            :length   => { :within => 1..3 },
-            :numericality => true
+            :presence => { :message => "Non puo' essere vuoto."},
+            :length   => { :within => 1..3, :too_long => "Troppo lungo.", :too_short => "Troppo corto." },
+            :numericality => { :message => "Deve essere un numero."}
   
   validates :n_bedroom,  
-            :presence => true,
-            :length   => { :within => 1..3 },
-            :numericality => true
+            :presence => { :message => "Non puo' essere vuoto."},
+            :length   => { :within => 1..3, :too_long => "Troppo lungo.", :too_short => "Troppo corto." },
+            :numericality => { :message => "Deve essere un numero."}
   
   validates :n_bathroom,  
-            :presence => true,
-            :length   => { :within => 1..3 },
-            :numericality => true
+            :presence => { :message => "Non puo' essere vuoto."},
+            :length   => { :within => 1..3, :too_long => "Troppo lungo.", :too_short => "Troppo corto." },
+            :numericality => { :message => "Deve essere un numero."}
   
   validates :year_of_construction,  
-            :presence => true,
-            :length   => { :within => 4..4 },
-            :numericality => true
-  
+            :presence => { :message => "Non puo' essere vuoto."},
+            :length   => { :within => 4..4, :too_long => "Troppo lungo.", :too_short => "Troppo corto." },
+            :numericality => { :message => "Deve essere un numero."}
+          
+  validates :price,  
+            :presence => { :message => "Non puo' essere vuoto."},
+            :numericality => { :message => "Deve essere un numero."}
+          
   validates :id_TypeOfHouse,  
-            :presence => true,
-            :numericality => true
+            :presence => { :message => "Non puo' essere vuoto."},
+            :numericality => { :message => "Deve essere un numero."}
   
   validates :id_TypeOfContract,  
-            :presence => true,
-            :numericality => true
+            :presence => { :message => "Non puo' essere vuoto."},
+            :numericality => { :message => "Deve essere un numero."}
   
   validates :id_Condition,  
-            :presence => true,
-            :numericality => true
+            :presence => { :message => "Non puo' essere vuoto."},
+            :numericality => { :message => "Deve essere un numero."}
           
   
   
@@ -73,7 +81,7 @@ class House < ActiveRecord::Base
     prov = search[:post][:province][0..1]
     min_price = search[:post][:minimum_price].to_i
     max_price = search[:post][:maximun_price].to_i
-    #searched_house = House.find(:all, :conditions => "total_sqm > #{min_sqm}")
+    
     
     
     condition = "total_sqm > #{min_sqm} "
@@ -116,6 +124,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: houses
@@ -137,5 +146,6 @@ end
 #  id_TypeOfContract    :integer
 #  id_Condition         :integer
 #  id_TypeOfHouse       :integer
+#  price                :integer
 #
 

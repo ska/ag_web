@@ -1,5 +1,6 @@
-<%= form_for @type_of_contract, :url => url_for(:controller => 'admin/settings', :action => 'save_contract') do |f| %>
-<h3>Nuovo tipo di contratto</h3>
+<h2>Nuovo tipo di contratto</h2>
+<%= form_for @type_of_contract, :url => url_for(:controller => 'admin/settings', :action => 'save_contract'), :validate => true do |f| %>
+<%= render 'shared/error_messages', :object => f.object %>
 <div class="field">
   <%= f.label :name %><br />
   <%= f.text_field :name %>

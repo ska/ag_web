@@ -6,12 +6,19 @@ class Message < ActiveRecord::Base
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
   validates :name,  
-            :presence => true,
-            :length   => { :maximum => 50 }  
+            :presence => { :message => "Il nome	e' obbligatorio."},
+            :length   => { :maximum => 50, :too_long => "Il nome	puo' avere al massimo 50 caratteri" }
+
           
   validates :email, 
-            :presence   => true,
-            :format     => { :with => email_regex }
+            :presence   => { :message => "L' E-mail e' obbligatoria."},
+            :format     => { :with => email_regex, :message => "Formato E-mail non corretto." }
+  
+  validates :object, 
+            :presence   => { :message => "L' oggetto del messaggio e' obbligatorio."}
+          
+  validates :text, 
+            :presence   => { :message => "Il testo del messaggio e' obbligatorio."}
   
 end
 

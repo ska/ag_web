@@ -1,21 +1,17 @@
-
-<%= form_for [:admin,@image], :html => {:multipart => true } do |f| %>
-
-
-
-
-
+<h2>Inserisci un immagine</h2>
+<%= form_for [:admin,@image], :html => {:multipart => true }, :validate => true do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
   <%= f.hidden_field :house_id %>
   <p>
-    <%= f.label :name %><br />
+    <%= f.label "Titolo" %><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :image %><br />
+    <%= f.label "File immagine" %><br />
     <%= f.file_field :image %>
   </p>
   <p>
-    <%= f.label :remote_image_url %><br />
+    <%= f.label "Link remoto" %><br />
     <%= f.text_field :remote_image_url %>
   </p>
   <p><%= f.submit %></p>

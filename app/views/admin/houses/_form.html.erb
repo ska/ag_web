@@ -1,69 +1,60 @@
 <%= form_for [:admin, @house], :validate => true do |f| %>
-  <% if @house.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@house.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
-      <% @house.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_messages', :object => f.object %>
 
   <div class="field">
-    <%= f.label :titolo, "Titolo annuncio" %><br />
+    <%= f.label "Titolo annuncio" %><br />
     <%= f.text_field :titolo %>
   </div>
   <div class="field">
-    <%= f.label :descrizione, "Descrizione casa" %><br />
+    <%= f.label "Descrizione casa" %><br />
     <%= f.text_area :descrizione %>
   </div>
   <div class="field">
-    <%= f.label :town, "Paese" %><br />
+    <%= f.label "Paese" %><br />
     <%= f.text_field :town %>
   </div>
   <div class="field">
-    <%= f.label :postcode, "C.A.P." %><br />
+    <%= f.label "C.A.P." %><br />
     <%= f.text_field :postcode %>
   </div>
   <div class="field">
-    <%= f.label :province, "Provincia" %><br />
+    <%= f.label "Provincia" %><br />
     <%= f.text_field :province %>
   </div>
   <div class="field">
-    <%= f.label :total_sqm, "Metri quadrati" %><br />
+    <%= f.label "Metri quadrati" %><br />
     <%= f.text_field :total_sqm %>
   </div>
   <div class="field">
-    <%= f.label :n_total_room, "Numero locali" %><br />
+    <%= f.label "Numero locali" %><br />
     <%= f.text_field :n_total_room %>
   </div>
   <div class="field">
-    <%= f.label :n_bedroom, "Numero camere" %><br />
+    <%= f.label "Numero camere" %><br />
     <%= f.text_field :n_bedroom %>
   </div>
   <div class="field">
-    <%= f.label :n_bathroom, "Numero bagni" %><br />
+    <%= f.label "Numero bagni" %><br />
     <%= f.text_field :n_bathroom %>
   </div>
   <div class="field">
-    <%= f.label :year_of_construction, "Anno costruzione" %><br />
+    <%= f.label "Anno costruzione" %><br />
     <%= f.text_field :year_of_construction %>
   </div>
   <div class="field">
-    <%= f.label :price, "Prezzo" %><br />
+    <%= f.label "Prezzo" %><br />
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :id_TypeOfHouse, "Titologia casa" %><br />
+    <%= f.label "Titologia casa" %><br />
     <%= f.collection_select :id_TypeOfHouse, TypeOfHouse.all, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :id_TypeOfContract, "Tipo contratto" %><br />
+    <%= f.label "Tipo contratto" %><br />
     <%= f.collection_select :id_TypeOfContract, TypeOfContract.all, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :id_Condition, "Condizioni casa" %><br />
+    <%= f.label "Condizioni casa" %><br />
     <%= f.collection_select :id_Condition, Condition.all, :id, :name %>
   </div>
   <div class="actions">

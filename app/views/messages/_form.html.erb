@@ -1,27 +1,26 @@
 <div style="text-align: left; padding: 30px;">
   <%= form_for @message, :validate => true do |f| %>
-  <div class="field">
-    <%= f.label :name, "Nome e Cognome" %><br />
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">    
+    <%= f.label  "Nome e Cognome" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :email, "E-mail" %><br />
+    <%= f.label "E-mail" %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :object, "Oggetto" %><br />
+    <%= f.label "Oggetto" %><br />
     <%= f.text_field :object %>
   </div>
   <div class="field">
-    <%= f.label :text, "Testo" %><br />
+    <%= f.label "Testo" %><br />
     <%= f.text_area :text %>
   </div>
-  <div class="field">
     <%= f.hidden_field :house_id, :value => @house.id %>
-  </div>
-
   <div class="action">
     <%= f.submit "Invia messaggio" %>
   </div>
   <% end %>
 </div>
+<br clear="all" />

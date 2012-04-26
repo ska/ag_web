@@ -7,19 +7,20 @@ class User < ActiveRecord::Base
   
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
+  
   validates :name,  
-            :presence => true,
-            :length   => { :maximum => 50 }  
+            :presence => { :message => "Non puo' essere vuoto."},
+            :length   => { :maximum => 50, :too_long => "Troppo lungo." }
+
           
   validates :email, 
-            :presence   => true,
-            :format     => { :with => email_regex },
-            :uniqueness => { :case_sensitive => false }
+            :presence   => { :message => "Non puo' essere vuoto."},
+            :format     => { :with => email_regex, :message => "Formato non corretto." }
           
   validates :password,
-            :presence   => true,
-            :confirmation => true,
-            :length   => { :within => 6..40 }, 
+            :presence   => { :message => "Non puo' essere vuoto."},
+            :confirmation => { :message => "La conferma non coincide con la password."},
+            :length   => { :within => 6..40, :too_long => "Troppo lunga.", :too_short => "Troppo corto." },
             :on => :create          
           
   before_create :encrypt_password

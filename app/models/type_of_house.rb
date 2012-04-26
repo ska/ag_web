@@ -1,4 +1,6 @@
 class TypeOfHouse < ActiveRecord::Base
+  validates :name,  
+            :presence => { :message => "Il nome	e' obbligatorio."}
 end
 
 # == Schema Information
