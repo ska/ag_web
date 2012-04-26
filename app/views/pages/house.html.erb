@@ -21,8 +21,8 @@
     <td><b>Contratto: </b><%= @house.TypeOfContract.name %></td>
   </tr>
   <tr>
-    <td><b>Tipo casa: </b><%= @tipo_casa %></td>
-    <td><b>Condizioni: </b><%= @condizioni %></td>
+    <td><b>Tipo casa: </b><%= @house.TypeOfHouse.name %></td>
+    <td><b>Condizioni: </b><%= @house.Condition.name %></td>
   </tr>
   <tr>
     <td><b>Prezzo: </b><%= @house.price.to_i %> &euro;</td>

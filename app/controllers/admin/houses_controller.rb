@@ -16,9 +16,6 @@ class Admin::HousesController < ApplicationController
   def show
     @house = House.find(params[:id])
     @messages = @house.messages
-    @contract = TypeOfContract.find(@house.TypeOfContract_id).name
-    @tipo_casa = TypeOfHouse.find(@house.id_TypeOfHouse).name
-    @condizioni = Condition.find(@house.id_Condition).name
   end
   
   ##--------------- FILTRO ENABLED ---------------##

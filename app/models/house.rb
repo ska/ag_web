@@ -3,6 +3,8 @@ class House < ActiveRecord::Base
   has_many :messages, :dependent => :destroy
   has_many :images, :dependent => :destroy
   belongs_to :TypeOfContract
+  belongs_to :TypeOfHouse
+  belongs_to :Condition
   
   default_scope :order => 'updated_at DESC'
   
@@ -56,7 +58,7 @@ class House < ActiveRecord::Base
             :presence => { :message => "Non puo' essere vuoto."},
             :numericality => { :message => "Deve essere un numero."}
           
-  validates :id_TypeOfHouse,  
+  validates :TypeOfHouse_id,  
             :presence => { :message => "Non puo' essere vuoto."},
             :numericality => { :message => "Deve essere un numero."}
   
@@ -64,7 +66,7 @@ class House < ActiveRecord::Base
             :presence => { :message => "Non puo' essere vuoto."},
             :numericality => { :message => "Deve essere un numero."}
   
-  validates :id_Condition,  
+  validates :Condition_id,  
             :presence => { :message => "Non puo' essere vuoto."},
             :numericality => { :message => "Deve essere un numero."}
           
@@ -74,7 +76,7 @@ class House < ActiveRecord::Base
   def self.search(search)          
     #Prova ricerche selettive
     contr = search[:post][:TypeOfContract_id].to_i
-    house = search[:post][:id_TypeOfHouse].to_i
+    house = search[:post][:TypeOfHouse_id].to_i
     min_sqm = search[:post][:minimum_sqm].to_i
     max_sqm = search[:post][:maximun_sqm].to_i
     town = search[:post][:town]
@@ -92,7 +94,7 @@ class House < ActiveRecord::Base
     end
     
     if ( house > 1)
-      condition = condition + "AND id_TypeOfHouse = #{house} "
+      condition = condition + "AND TypeOfHouse_id = #{house} "
     end
         
     if ( max_sqm > 0 )
