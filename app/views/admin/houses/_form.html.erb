@@ -51,7 +51,7 @@
   </div>
   <div class="field">
     <%= f.label "Tipo contratto" %><br />
-    <%= f.collection_select :id_TypeOfContract, TypeOfContract.all, :id, :name %>
+    <%= f.collection_select :TypeOfContract_id, TypeOfContract.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label "Condizioni casa" %><br />

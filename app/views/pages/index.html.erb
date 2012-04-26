@@ -21,7 +21,7 @@
     <td>
       <%= link_to "Vedi", house_page_path(house)  %>
     </td>
-    <td><b><%= house.price %> &euro; | <%= house.total_sqm %> m<sup>2</sup> | <%= house.n_total_room %> locali | <%= TypeOfContract.find(house.id_TypeOfContract).name %> </b></td>
+    <td><b><%= house.price %> &euro; | <%= house.total_sqm %> m<sup>2</sup> | <%= house.n_total_room %> locali | <%= house.TypeOfContract.name %> </b></td>
   
   </tr>
   <% end %>

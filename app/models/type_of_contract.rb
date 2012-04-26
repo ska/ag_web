@@ -1,4 +1,7 @@
 class TypeOfContract < ActiveRecord::Base
+  
+  has_many :houses
+  
   validates :name,  
             :presence => { :message => "Il nome	e' obbligatorio."}
 end

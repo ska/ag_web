@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426092651) do
+ActiveRecord::Schema.define(:version => 20120426214543) do
 
   create_table "conditions", :force => true do |t|
     t.string   "name"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20120426092651) do
     t.integer  "n_bathroom"
     t.integer  "year_of_construction"
     t.integer  "user_id"
-    t.integer  "id_TypeOfContract"
+    t.integer  "TypeOfContract_id"
     t.integer  "id_Condition"
     t.integer  "id_TypeOfHouse"
     t.integer  "price"

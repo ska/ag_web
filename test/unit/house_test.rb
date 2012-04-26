@@ -9,6 +9,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: houses
@@ -27,7 +28,7 @@ end
 #  n_bathroom           :integer
 #  year_of_construction :integer
 #  user_id              :integer
-#  id_TypeOfContract    :integer
+#  TypeOfContract_id    :integer
 #  id_Condition         :integer
 #  id_TypeOfHouse       :integer
 #  price                :integer

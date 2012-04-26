@@ -2,6 +2,7 @@ class House < ActiveRecord::Base
   belongs_to :user
   has_many :messages, :dependent => :destroy
   has_many :images, :dependent => :destroy
+  belongs_to :TypeOfContract
   
   default_scope :order => 'updated_at DESC'
   
@@ -59,7 +60,7 @@ class House < ActiveRecord::Base
             :presence => { :message => "Non puo' essere vuoto."},
             :numericality => { :message => "Deve essere un numero."}
   
-  validates :id_TypeOfContract,  
+  validates :TypeOfContract_id,  
             :presence => { :message => "Non puo' essere vuoto."},
             :numericality => { :message => "Deve essere un numero."}
   
@@ -72,7 +73,7 @@ class House < ActiveRecord::Base
   
   def self.search(search)          
     #Prova ricerche selettive
-    contr = search[:post][:id_TypeOfContract].to_i
+    contr = search[:post][:TypeOfContract_id].to_i
     house = search[:post][:id_TypeOfHouse].to_i
     min_sqm = search[:post][:minimum_sqm].to_i
     max_sqm = search[:post][:maximun_sqm].to_i
@@ -87,7 +88,7 @@ class House < ActiveRecord::Base
     condition = "total_sqm > #{min_sqm} "
     
     if ( contr >1 )
-      condition = condition + "AND id_TypeOfContract = #{contr} "
+      condition = condition + "AND TypeOfContract_id = #{contr} "
     end
     
     if ( house > 1)
@@ -125,6 +126,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: houses
@@ -143,7 +145,7 @@ end
 #  n_bathroom           :integer
 #  year_of_construction :integer
 #  user_id              :integer
-#  id_TypeOfContract    :integer
+#  TypeOfContract_id    :integer
 #  id_Condition         :integer
 #  id_TypeOfHouse       :integer
 #  price                :integer

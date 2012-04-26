@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   def house
     @house = House.find(params[:id])
     @message = Message.new
-    @contract = TypeOfContract.find(@house.id_TypeOfContract).name
+    
     @tipo_casa = TypeOfHouse.find(@house.id_TypeOfHouse).name
     @condizioni = Condition.find(@house.id_Condition).name
     @title = @house.titolo
