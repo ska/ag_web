@@ -11,22 +11,6 @@ class Admin::MessagesController < ApplicationController
     @message.save    
   end
 
-  def new
-    @message = Message.new
-  end
-
-  def create
-    @house = House.find(params[:message][:house_id])
-    @user = User.find(@house.user_id)
-    
-    @message = @user.messages.new(params[:message])
-    if @message.save
-      redirect_to(admin_houses_path(@house), :error => 'Message was successfully created.')
-    else
-      render :action => "new"
-    end
-  end
-
   def destroy
     @message = Message.find(params[:id])
     @message.destroy

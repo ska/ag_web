@@ -12,29 +12,23 @@
   <div id="navigation">
     <ul>
       <li><%= link_to "HOME", root_path %> </li>
-      <li><a href="#">BUYING</a></li>
     </ul>
   </div>
     <div id="content_top">
-
-      <div style="width: 170px; background: #ddd; float: left; border: 2px solid silver;">
+      <div style="width: 170px; background: #ddd; float: left; border: 2px solid silver;">        
         <h3>Cerca</h3>
-      </div>
-      
-      
+        <%= render 'shared/search_form' %>
+      </div>            
       <div id="main_content">
         <% flash.each do |key, value| %>
-          <div class="flash <%= key %> "><%= value %></div>
+          <div class="flash <%= key %>"><%= value %></div>
         <% end %>
         <%= yield %>       
       </div>
       <br clear="all" />
-
     </div>
   <div id="fotter">
-    <div class="design_info" id="footer">Designed by <a id="dum" href="http://freedesignertemplates.com/">www.freedesignertemplates.com</a></div>
-    <div class="copyrights">Copyright Information Goes Here. All Rights Reserved.</div>
+    <div class="design_info" id="footer">Designed by Luigi Scagnet</div>
   </div>
 </body>
 </html>
- 

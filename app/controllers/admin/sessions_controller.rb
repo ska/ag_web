@@ -1,5 +1,6 @@
 class Admin::SessionsController < ApplicationController
   #before_filter :authenticate, :only => [:destroy]
+  layout 'admin/layout_hosidebar'
   def new
     if signed_in?
       redirect_to admin_user_path(current_user)

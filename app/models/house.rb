@@ -58,6 +58,58 @@ class House < ActiveRecord::Base
   validates :id_Condition,  
             :presence => true,
             :numericality => true
+          
+  
+  
+  
+  def self.search(search)          
+    #Prova ricerche selettive
+    contr = search[:post][:id_TypeOfContract].to_i
+    house = search[:post][:id_TypeOfHouse].to_i
+    min_sqm = search[:post][:minimum_sqm].to_i
+    max_sqm = search[:post][:maximun_sqm].to_i
+    town = search[:post][:town]
+    max_sqm = search[:post][:maximun_sqm].to_i
+    prov = search[:post][:province][0..1]
+    min_price = search[:post][:minimum_price].to_i
+    max_price = search[:post][:maximun_price].to_i
+    #searched_house = House.find(:all, :conditions => "total_sqm > #{min_sqm}")
+    
+    
+    condition = "total_sqm > #{min_sqm} "
+    
+    if ( contr >1 )
+      condition = condition + "AND id_TypeOfContract = #{contr} "
+    end
+    
+    if ( house > 1)
+      condition = condition + "AND id_TypeOfHouse = #{house} "
+    end
+        
+    if ( max_sqm > 0 )
+      condition = condition + "AND total_sqm < #{max_sqm} "
+    end
+    
+    unless ( town.empty? )
+      condition = condition + "AND town LIKE '#{town}' "
+    end
+       
+    unless ( prov.empty? )
+      condition = condition + "AND province LIKE '#{prov}' "
+    end
+    
+    if ( max_price > 0 )
+      condition = condition + "AND price > #{min_price} "
+    end
+    
+    if ( max_price > 0 )
+      condition = condition + "AND price < #{max_price} "
+    end
+    
+    
+    #return searched_house
+    find(:all, :conditions => [condition])
+  end
   
 end
 

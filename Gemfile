@@ -15,7 +15,9 @@ gem 'rmagick', '2.13.1', :require => 'RMagick'
 gem 'carrierwave'
 gem 'will_paginate', '3.0.2'
 #gem 'mysql2', '~> 0.2.11'
-
+gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'
+gem 'ruby-debug-base19x', '~> 0.11.30.pre4'
+gem 'ruby-debug19'
 
 group :test do
   gem 'rspec-rails', '2.6.1'

@@ -1,9 +1,14 @@
 AgWeb::Application.routes.draw do 
-  root :to => "pages#home"
-  get "pages/home"
-
-  get "pages/about"
-
+  root :to => "pages#index"
+  
+  
+  resources :messages, :only => [:create]
+  resources :pages, :only => [:index] do
+    member do 
+        get :house
+      end
+  end
+  
   namespace :admin do
     root :to => "sessions#new"    
     match '/signout', :to => 'sessions#destroy'
@@ -18,7 +23,7 @@ AgWeb::Application.routes.draw do
     
     resources :images    
     resources :sessions, :only => [:new, :create, :destroy]
-    resources :messages, :except => [:edit, :update]
+    resources :messages, :except => [:new, :create, :edit, :update]
     
     resources :settings, :only => [:index] do
       collection do        

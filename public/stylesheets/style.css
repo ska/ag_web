@@ -130,10 +130,8 @@ color:#000000;
     float:right;
     width:749px;
     border: 2px solid silver;
+    min-height: 500px;
 }
-
-
-
 
 
 /*------------------------------------------------fotter--------------------*/
@@ -154,14 +152,7 @@ color:#e7e7e7;
 float:left;
 padding-left:10px;
 }
-.copyrights
-{
-margin:0 auto;
-width:280px;
-font: normal 11px/24px Arial, Helvetica, sans-serif;
-color:#e7e7e7;
-float:right;
-}
+
 #fotter a
 {
 color:#d9aa6d;

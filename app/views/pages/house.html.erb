@@ -1,0 +1,49 @@
+<h1><%= @house.titolo %></h1>
+<table>
+  <tr>
+    <td rowspan="6" style="width: 200px;">
+      <%= image_tag @house.images.first.image_url(:house_view).to_s unless @house.images.first.nil? %> 
+      <%= casa_default if @house.images.first.nil? %> 
+    </td>
+    <td style="width: 200px;"><b>Citt&agrave;: </b><%= @house.town %> (<%= @house.province %>)</td>
+    <td><b>Cap: </b><%= @house.postcode %></td>
+  </tr>
+  <tr>
+    <td><b>M<sup>2</sup>: </b><%= @house.total_sqm %></td>
+    <td><b>N<sup>o</sup> locali: </b><%= @house.n_total_room %></td>
+  </tr>
+  <tr>
+    <td><b>N<sup>o</sup> camere: </b><%= @house.n_bedroom %></td>
+    <td><b>N<sup>0</sup> bagni: </b><%= @house.n_bathroom %></td>
+  </tr>
+  <tr>
+    <td><b>Anno costruzione: </b><%= @house.year_of_construction %></td>
+    <td><b>Contratto: </b><%= @contract %></td>
+  </tr>
+  <tr>
+    <td><b>Tipo casa: </b><%= @tipo_casa %></td>
+    <td><b>Condizioni: </b><%= @condizioni %></td>
+  </tr>
+  <tr>
+    <td><b>Prezzo: </b><%= @house.price.to_i %> &euro;</td>
+    <td></td>
+  </tr>
+  <tr>    
+    <td colspan="3"><%= @house.descrizione %></td>
+  </tr>
+</table>
+<% unless  @house.images.empty? %>
+  <hr />
+  <h3>Immagini della casa</h3>
+  <div style="width: 90%; margin: auto;">
+  <marquee>
+  <% for image in @house.images %>  
+    <%= image_tag image.image_url(:house_view).to_s %> 
+  <% end %>
+  </marquee>
+  </div>
+<% end %>
+<br clear="all"/>
+<hr />
+<%= render 'messages/form' %>
+

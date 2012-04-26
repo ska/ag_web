@@ -52,6 +52,10 @@
     <%= f.text_field :year_of_construction %>
   </div>
   <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
     <%= f.label :id_TypeOfHouse %><br />
     <%= f.collection_select :id_TypeOfHouse, TypeOfHouse.all, :id, :name %>
   </div>
@@ -64,7 +68,7 @@
     <%= f.collection_select :id_Condition, Condition.all, :id, :name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Aggiorna casa" %>
   </div>
 <% end %>
 
