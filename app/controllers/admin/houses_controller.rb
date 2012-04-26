@@ -4,18 +4,21 @@ class Admin::HousesController < ApplicationController
   layout 'admin/layout'
   ##--------------- NESSUN FILTRO ---------------##  
   def index
-    @houses = House.all
+    @houses = House.paginate(:page => params[:page], :per_page => 10)
   end
   
   def user    
     @user = User.find(params[:id])
-    @houses = @user.houses    
-    render :template => 'admin/houses/index_user'
+    @houses = @user.houses.paginate(:page => params[:page], :per_page => 10)    
+    render :template => 'admin/houses/index'
   end
 
   def show
     @house = House.find(params[:id])
-    @message = Message.new
+    @messages = @house.messages
+    @contract = TypeOfContract.find(@house.id_TypeOfContract).name
+    @tipo_casa = TypeOfHouse.find(@house.id_TypeOfHouse).name
+    @condizioni = Condition.find(@house.id_Condition).name
   end
   
   ##--------------- FILTRO ENABLED ---------------##
@@ -26,7 +29,7 @@ class Admin::HousesController < ApplicationController
   def create     
     @house = current_user.houses.build(params[:house])
     if @house.save
-      redirect_to admin_house_path(@house), :flash => { :success => "Casa inserita nel database!"}
+      redirect_to admin_house_path(@house), :flash => { :success => "Casa salvata"}
     else
       render 'new'
     end
@@ -39,7 +42,7 @@ class Admin::HousesController < ApplicationController
   
   def update    
     if @house.update_attributes(params[:house])
-      redirect_to admin_house_path(@house)
+      redirect_to admin_house_path(@house), :flash => { :success => "Modifica avvenuta con successo"}
     else
       render 'new'
     end
@@ -47,7 +50,7 @@ class Admin::HousesController < ApplicationController
 
   def destroy
     @house.destroy
-    redirect_to admin_houses_path
+    redirect_to admin_houses_path, :flash => { :success => "Casa eliminata"}
   end
   
   private
@@ -61,16 +64,7 @@ class Admin::HousesController < ApplicationController
         if @house.nil?
           redirect_to admin_houses_path
         end
-      end
-      
-#      def redirect_after_update
-#        if current_user.admin?
-#          redirect_to admin_houses_path, :flash => { :success => "Modifica avvenuta con successo!"}
-#        else
-#          redirect_to user_admin_house_path(current_user), :flash => { :success => "Modifica avvenuta con successo!"}
-#        end
-#      end
-      
+      end     
     end
   
   

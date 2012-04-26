@@ -5,8 +5,11 @@ AgWeb::Application.routes.draw do
   resources :messages, :only => [:create]
   resources :pages, :only => [:index] do
     member do 
-        get :house
-      end
+      get :house
+    end
+    collection do
+      get :chi_siamo
+    end  
   end
   
   namespace :admin do
@@ -23,7 +26,15 @@ AgWeb::Application.routes.draw do
     
     resources :images    
     resources :sessions, :only => [:new, :create, :destroy]
-    resources :messages, :except => [:new, :create, :edit, :update]
+    
+    resources :messages, :except => [:new, :create, :edit, :update] do
+      collection do
+        get :admin_index
+      end
+      member do 
+        get :user_index
+      end
+    end
     
     resources :settings, :only => [:index] do
       collection do        

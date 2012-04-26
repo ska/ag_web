@@ -1,30 +1,43 @@
-<h1>Elenco completo case</h1>
-  <table>
-    <tr>
-      <th></th>
-      <th>Titolo</th>
-      <th>Immagini</th>
-      <th>Utente</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+<h2>Elenco completo case</h2>
+<div class="center">
+  <%= will_paginate @houses, :previous_label => "<< Indietro", :next_label => "Avanti >>" %>
+</div>
+<table>
+  <tr>
+    <th></th>
+    <th>Titolo</th>
+    <th>Immagini</th>
+    <th>Utente</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
   <% @houses.each do |house| %>
     <tr class="<%= cycle("even", "odd") %>">
-      <td><%= image_tag house.images.first.image_url(:thumb).to_s unless house.images.first.nil? %> </td>
+      <td>
+        <%= image_tag house.images.first.image_url(:thumb).to_s unless house.images.first.nil? %>
+        <%= casa_default if house.images.first.nil? %> 
+      </td>
       <td><%= house.titolo %></td>
       <td><%=  house.images.size %></td>
       <td><%= house.user.name %> </td>
       <td><%= link_to  "Vedi", admin_house_path(house) %> </td>
-      <td><%= link_to  "Modifica", edit_admin_house_path(house) if current_user.admin?%> </td>
-      <td>
-        <% if current_user.admin? %>
+      
+      <% if current_user.admin? || house.user == current_user %>
+        <td><%= link_to  "Modifica", edit_admin_house_path(house) %> </td>
+        <td>       
           <%=link_to admin_house_path(house),:method => :delete do %>
             <%='Elimina'%>
           <% end %>
-        <%end %>
-      </td>
+        </td>
+      <% else %>
+        <td></td><td></td>
+      <% end %>
+        
     </tr>
   <% end %>
-  </table>
+</table>
+<div class="center">
+  <%= will_paginate @houses, :previous_label => "<< Indietro", :next_label => "Avanti >>" %>
+</div>
 <br />

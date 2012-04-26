@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  require 'will_paginate/array'
   def index
+    @title = 'Elenco case'
     @houses = ''
     if params[:post].nil?
       @houses = House.paginate(:page => params[:page], :per_page => 3)
@@ -15,6 +15,11 @@ class PagesController < ApplicationController
     @contract = TypeOfContract.find(@house.id_TypeOfContract).name
     @tipo_casa = TypeOfHouse.find(@house.id_TypeOfHouse).name
     @condizioni = Condition.find(@house.id_Condition).name
+    @title = @house.titolo
   end
-
+  
+  def chi_siamo
+    
+  end
+  
 end

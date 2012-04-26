@@ -1,18 +1,24 @@
-<p id="notice"><%= notice %></p>
+<h2>Messaggio</h2><br />
+<table style="border: 1px solid #ddd;">
+  <tr>
+    <td style="border: 1px solid #ddd;">Casa riferimento:</td>
+    <td style="border: 1px solid #ddd;"><%= link_to @message.house.titolo, admin_house_path(@message.house) %></td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #ddd;">Ricevuto da:</td>
+    <td style="border: 1px solid #ddd;"><%=  @message.name %><br /><%= mail_to @message.email %></td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #ddd;">Oggetto:</td>
+    <td style="border: 1px solid #ddd;"><%=  @message.object %></td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #ddd;">Testo:</td>
+    <td style="border: 1px solid #ddd;"><%=  @message.text %></td>
+  </tr>
+</table>
+<%= link_to 'Indietro', admin_messages_path %>&nbsp;|&nbsp;
+<%= link_to "Cancella", admin_message_path(@message),:method => :delete, :confirm => "Cancellare?" %>&nbsp;|&nbsp;
+<%= mail_to @message.email, "Rispondi via E-mail" %>
 
-<p>
-  <b>Object:</b>
-  <%= @message.object %>
-</p>
 
-<p>
-  <b>Text:</b>
-  <%= @message.text %>
-</p>
-
-<p>
-  <b>House:</b>
-  <%= @message.house_id %>
-</p>
-
-<%= link_to 'Back', admin_messages_path %>

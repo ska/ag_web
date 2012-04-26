@@ -1,16 +1,17 @@
+<h2>Profilo utente</h2>
 <p>
-  <b>Titolo:</b>
+  <b>Nome:</b>
   <%= @user.name %>
 </p>
 <p>
-  <b>Descrizione:</b>
+  <b>E-mail:</b>
   <%= @user.email %>
 </p>
+
 <p>
-  <b>Abilitato:</b>
-  <%= @user.enabled %>
-</p>
-<p>
-  <b>Admin:</b>
-  <%= @user.admin %>
+  <% if @new_message > 0 %>
+    Hai <%=  @new_message %> nuovo messaggio <%= link_to "Leggi", admin_messages_path %>
+  <% elsif @new_message > 1 %>
+    Hai <%=  @new_message %> nuovi messaggi <%= link_to "Leggi", admin_messages_path %>
+  <% end %>
 </p>

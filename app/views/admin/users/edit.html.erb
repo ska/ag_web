@@ -1,6 +1,6 @@
-<h1>Editing <%=  @user.name %></h1>
+<h2>Modifica profilo <%=  @user.name %></h2>
 
-<%= form_for([:admin, @user]) do |f| %>
+<%= form_for [:admin, @user], :validate  do |f| %>
   <div class="field">
     <%= f.label :name, "Nome e cognome:" %><br />
     <%= f.text_field :name %>
@@ -9,16 +9,8 @@
     <%= f.label :email, "E-mail:" %><br />
     <%= f.text_field :email %>
   </div>
-  <div class="field">
-    <%= f.label :enabled, "Profilo abilitato:" %><br />
-    <%= f.check_box :enabled, :disabled => "disabled" %>
-  </div>
-  <div class="field">
-    <%= f.label :admin, "Amministratore:" %><br />
-    <%= f.check_box :admin, :disabled => "disabled" %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Aggiorna profilo" %>
   </div>
 <% end %>
 

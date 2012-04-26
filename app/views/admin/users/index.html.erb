@@ -1,23 +1,19 @@
-<h1>Listing Users</h1>
+<h2>Elenco utenti</h2>
 
-<table>
+<table style="border: 2px solid #ddd;">
 
 <% @users.each do |user| %>
-  <tr class="<%= cycle("even", "odd") %>">
+  <tr class="<%= cycl_cl = cycle("even", "odd") %>">
     <td><%= user.name %></td>
     <td><%= user.email %></td>
     <td>Abilitato: <%= user.enabled %></td>
     <td>Admin: <%= user.admin %></td>
   </tr> 
-  <tr class="<%= cycle("even", "odd") %>">
+  <tr class="<%= cycl_cl %>" >
     <td><%= link_to 'Permessi', edit_permission_admin_user_path(user) %></td>
     <td><%= link_to "Le sue case", user_admin_house_path(user)  %></td>
-    <td>
-      <%=link_to admin_user_path(user),:method => :delete do %>
-        <%='Elimina'%>
-      <% end %>
-    </td>
-    <td></td>
+    <td><%= link_to "I suoi messaggi", user_index_admin_message_path(user)  %></td>
+    <td><%= link_to "Cancella", admin_user_path(user),:method => :delete, :confirm => "Cancellare?" %></td>   
   </tr>  
     
   

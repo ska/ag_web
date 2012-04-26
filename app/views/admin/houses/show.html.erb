@@ -1,52 +1,81 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @house.titolo %></h1>
+<table>
+  <tr>
+    <td rowspan="6" style="width: 150px;">
+      <%= image_tag @house.images.first.image_url(:thumb).to_s unless @house.images.first.nil? %> 
+      <%= casa_default if @house.images.first.nil? %> 
+    </td>
+    <td style="width: 200px;"><b>Citt&agrave;: </b><%= @house.town %> (<%= @house.province %>)</td>
+    <td><b>Cap: </b><%= @house.postcode %></td>
+  </tr>
+  <tr>
+    <td><b>M<sup>2</sup>: </b><%= @house.total_sqm %></td>
+    <td><b>N<sup>o</sup> locali: </b><%= @house.n_total_room %></td>
+  </tr>
+  <tr>
+    <td><b>N<sup>o</sup> camere: </b><%= @house.n_bedroom %></td>
+    <td><b>N<sup>o</sup> bagni: </b><%= @house.n_bathroom %></td>
+  </tr>
+  <tr>
+    <td><b>Anno costruzione: </b><%= @house.year_of_construction %></td>
+    <td><b>Contratto: </b><%= @contract %></td>
+  </tr>
+  <tr>
+    <td><b>Tipo casa: </b><%= @tipo_casa %></td>
+    <td><b>Condizioni: </b><%= @condizioni %></td>
+  </tr>
+  <tr>
+    <td><b>Prezzo: </b><%= @house.price.to_i %> &euro;</td>
+    <td></td>
+  </tr>
+  <tr>    
+    <td colspan="3"><%= @house.descrizione %></td>
+  </tr>
+</table>
+<hr />
 
-<p>
-  <b>Titolo:</b>
-  <%= @house.titolo %>
-</p>
-<p>
-  <b>Descrizione:</b>
-  <%= @house.descrizione %>
-</p>
-<p>
-  <b>town:</b>
-  <%= @house.town %>
-</p>
-<p>
-  <b>postcode:</b>
-  <%= @house.postcode %>
-</p>
-<p>
-  <b>province:</b>
-  <%= @house.province %>
-</p>
-<p>
-  <b>User:</b>
-  <%= @house.user_id %>
-</p>
-
-
-<% for image in @house.images %>  
-  <%= image_tag image.image_url(:thumb).to_s %>   
-  <%=link_to admin_image_path(image),:method => :delete do %>
-    <%='Delete'%>
+<div style="width: 90%; margin: auto;">
+  <% for image in @house.images %>
+    <div style="text-align: center;height: 150px; margin: auto; float: left; padding: 2px;">
+      <%= image.name %><br />
+      <%= image_tag image.image_url(:thumb).to_s %><br />
+      <%= link_to "Cancella", admin_image_path(image),:method => :delete, :confirm => "Cancellare?" %>        
+    </div>
   <% end %>
+</div>
+<hr />
+
+<% if @messages.count != 0 && (@house.user == current_user || current_user.admin?) %>
+  Hai ricevuto <%= @messages.count %> messaggi in riferimento a questa casa.
+  <table>
+    <tr>
+      <th>Nome</th>
+      <th>Oggetto</th>
+      <th>Data</th>
+      <th>Oggetto</th>
+    </tr>
+    <% for message in @messages %>
+    <tr>
+      <td><%= message.name %> </td>
+      <td><%= message.object %> </td>
+      <td><%= message.created_at.try( :strftime, "Il %d/%m/%y alle %H:%M") %></td>
+      <td><%= link_to 'Vedi', admin_message_path(message) %></td>
+    </tr>
+    <% end %>
+  </table>
 <% end %>
-
-
-
-
-<br /><br /><br /><br /><br />
-
+    
+   
+    
+<br clear="all"/><br /><br />
+<hr />
 <%= link_to 'Indietro', admin_houses_path %>
-
 <% if current_user.admin || current_user == @house.user %>
   &nbsp;|&nbsp;
   <%= link_to 'Modifica casa', edit_admin_house_path(@house) %>
   &nbsp;|&nbsp;
   <%= link_to 'Aggiungi Immagine', new_admin_image_path(:house_id => @house) %>
   &nbsp;|&nbsp;
-  <%=link_to admin_house_path(@house),:method => :delete do %>
-    <%='Elimina casa'%>
-  <% end %>
+  <%= link_to "Cancella", admin_house_path(@house),:method => :delete, :confirm => "Cancellare?" %>
+  
 <% end %>

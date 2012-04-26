@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  belongs_to :houses
+  belongs_to :house
   belongs_to :user
   default_scope :order => 'created_at DESC'
   attr_accessible :object, :text, :user_id, :house_id, :name, :email, :read

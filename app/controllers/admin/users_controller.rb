@@ -65,7 +65,8 @@ class Admin::UsersController < ApplicationController
   
   ##--------------- FILTRO AUTHENTICATE ---------------##
   def show
-    @user = User.find(params[:id])    
+    @user = User.find(params[:id])
+    @new_message = @user.messages.find(:all, :conditions => ['read = ?', false]).count
   end
   
 end

@@ -1,5 +1,4 @@
-<h1>Listing messages</h1> 
-
+<h2>I tuoi messaggi</h2>
 <table>
   <tr>
     <th>Riferimento</th>
@@ -9,17 +8,17 @@
     <th></th>
   </tr>
 
-<% @messages.each do |message| %>
-  <% if message.read? %>
-    <tr>
-  <% else %>
-    <tr style="background: indianred;">
-  <% end %>
+  <% @messages.each do |message| %>
+    <% if message.read? %>
+      <tr>
+    <% else %>
+      <tr style="background: indianred;">
+    <% end %>
     <td><%= House.find(message.house_id).titolo %></td>
     <td><%= message.object %></td>
     <td><%= message.created_at.try( :strftime, "Il %d/%m/%y alle %H:%M") %></td>
-    <td><%= link_to 'Show', admin_message_path(message) %></td>
+    <td><%= link_to 'Leggi', admin_message_path(message) %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 
