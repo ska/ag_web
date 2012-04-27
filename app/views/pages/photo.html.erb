@@ -1,0 +1,13 @@
+<h3><%= @image.name %></h3>
+<%= image_tag(@image.image_url(:house_view).to_s) %>
+<br /><br /><br /><br />
+<hr />
+
+<h4>Altre immagini della casa</h4>
+<div id="photos">
+    <% for image in @images %>  
+      <%= link_to image_tag(image.image_url(:thumb).to_s) ,:controller => :pages, :action  =>  :photo, :id => image  %>
+    <% end %>
+</div>
+<br />
+<%= link_to 'Torna alla casa', house_page_path(@image.house) %>

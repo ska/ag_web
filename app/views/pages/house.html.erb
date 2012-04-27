@@ -36,9 +36,9 @@
   <hr />
   <h3>Immagini della casa</h3>
   <div style="width: 90%; margin: auto;">
-  <marquee>
-  <% for image in @house.images %>  
-    <%= image_tag image.image_url(:house_view).to_s %> 
+  <marquee  onmouseover="this.stop();" onmouseout="this.start();">
+  <% for image in @house.images %>      
+    <%= link_to image_tag(image.image_url(:thumb).to_s) ,:controller => :pages, :action  =>  :photo, :id => image  %>
   <% end %>
   </marquee>
   </div>

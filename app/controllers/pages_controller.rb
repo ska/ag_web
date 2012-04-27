@@ -15,6 +15,11 @@ class PagesController < ApplicationController
     @title = @house.titolo
   end
   
+  def photo
+    @image = Image.find(params[:id])
+    @images = @image.house.images
+  end
+  
   def chi_siamo
     
   end

@@ -28,24 +28,14 @@ div.content_center{
 
 
 
-
-
-
-
-
 #photos{
     height:110px;
     width:100%;
     padding:10px 0;
-    background-color:#fafafa;
     overflow:auto;
  }
-#photos div {
-    width:2246px;
-    padding:0 10px;
- }
 img.photo{
-    border:5px solid #fff;
+    border:5px solid #ddd;
     float:left;
     display:inline;
     margin-right:10px;

@@ -6,6 +6,7 @@ AgWeb::Application.routes.draw do
   resources :pages, :only => [:index] do
     member do 
       get :house
+      get :photo
     end
     collection do
       get :chi_siamo
