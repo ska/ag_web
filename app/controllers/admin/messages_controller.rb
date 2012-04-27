@@ -33,8 +33,9 @@ class Admin::MessagesController < ApplicationController
     if authorized_user
       @message.destroy
       redirect_to admin_messages_path, :flash => { :success => "Messaggio eliminato"}
+    else
+      redirect_to admin_messages_path, :flash => { :error => "Impossibile eliminare il messaggio"}
     end
-    redirect_to admin_messages_path, :flash => { :error => "Impossibile eliminare il messaggio"}
   end
   
   private

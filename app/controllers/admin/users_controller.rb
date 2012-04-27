@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_filter :authenticate, :except => [ :new, :create ]
   before_filter :enabled_user, :only => [ :edit, :update ]
-  before_filter :authenticate_admin, :only => [ :index, :admin_edit, :admin_update ]
+  before_filter :authenticate_admin, :only => [ :index, :admin_edit, :admin_update, :destroy ]
   
   layout 'admin/layout'
   
@@ -43,6 +43,12 @@ class Admin::UsersController < ApplicationController
     else
       render 'edit' #, :layout => 'admin_layout'      
     end
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path, :flash => { :success => "Profilo cancellato." }
   end
   
   ##--------------- FILTRO ENABLED ---------------##
