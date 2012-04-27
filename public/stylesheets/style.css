@@ -164,3 +164,14 @@ color:#f6ff00;
 text-decoration:underline;
 }
 
+.text-left{
+    text-align: left;
+}
+.text-left table,.text-left  td {
+    border: 2px solid #ddd;
+    width: 90%;
+    margin: auto;
+}
+.text-left  td {
+    width: 50%;
+}
