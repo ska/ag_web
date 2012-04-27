@@ -3,8 +3,7 @@ class Admin::ImagesController < ApplicationController
   
   layout 'admin/layout'
   
-  def new
-    
+  def new    
     @image = Image.new(:house_id => params[:house_id])
   end
 
@@ -34,6 +33,18 @@ class Admin::ImagesController < ApplicationController
       redirect_to admin_house_path(@image.house)
     end
   end
+  
+  def show
+    @image = Image.find(params[:id])
+    @images = @image.house.images
+  end
+  
+  
+  
+  
+  
+  
+  
   
   private
     def authorized_user

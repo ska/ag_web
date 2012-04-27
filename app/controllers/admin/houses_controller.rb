@@ -4,12 +4,12 @@ class Admin::HousesController < ApplicationController
   layout 'admin/layout'
   ##--------------- NESSUN FILTRO ---------------##  
   def index
-    @houses = House.paginate(:page => params[:page], :per_page => 10)
+    @houses = House.paginate(:page => params[:page], :per_page => 7)
   end
   
   def user    
     @user = User.find(params[:id])
-    @houses = @user.houses.paginate(:page => params[:page], :per_page => 10)    
+    @houses = @user.houses.paginate(:page => params[:page], :per_page => 7)    
     render :template => 'admin/houses/index'
   end
 

@@ -33,13 +33,22 @@
   </tr>
 </table>
 <hr />
-
+<%if @house.images.empty? && (@house.user == current_user || current_user.admin?) %>
+  <h3>
+    Non hai caricato nessuna foto per questa casa.<br />
+    Clicca <%= link_to 'qui', new_admin_image_path(:house_id => @house) %> per aggiungere un'immagine 
+  </h3>
+<% end %>
 <div style="width: 90%; margin: auto;">
   <% for image in @house.images %>
     <div style="text-align: center;height: 150px; margin: auto; float: left; padding: 2px;">
       <%= image.name %><br />
-      <%= image_tag image.image_url(:thumb).to_s %><br />
-      <%= link_to "Cancella", admin_image_path(image),:method => :delete, :confirm => "Cancellare?" %>        
+      
+      <%= link_to image_tag(image.image_url(:thumb).to_s) ,:controller => :images, :action  =>  :show, :id => image  %><br />
+      
+      <% if @house.user == current_user || current_user.admin? %>
+        <%= link_to "Cancella", admin_image_path(image),:method => :delete, :confirm => "Cancellare?" %>        
+      <% end %>
     </div>
   <% end %>
 </div>
@@ -70,6 +79,8 @@
 <br clear="all"/><br /><br />
 <hr />
 <%= link_to 'Indietro', admin_houses_path %>
+&nbsp;|&nbsp;
+<%= link_to 'Visualizza in Frontend', house_page_path(@house) %>
 <% if current_user.admin || current_user == @house.user %>
   &nbsp;|&nbsp;
   <%= link_to 'Modifica casa', edit_admin_house_path(@house) %>
@@ -77,5 +88,4 @@
   <%= link_to 'Aggiungi Immagine', new_admin_image_path(:house_id => @house) %>
   &nbsp;|&nbsp;
   <%= link_to "Cancella", admin_house_path(@house),:method => :delete, :confirm => "Cancellare?" %>
-  
 <% end %>

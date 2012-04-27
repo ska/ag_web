@@ -7,7 +7,7 @@ div#wrapper {
     margin:0 auto; /* for the rest */ 
     margin-bottom:1em;
     border:2px solid #ddd;
-    width: 750px;
+    width:790px;
 }
 div#head{
     border-bottom: 2px solid #ddd;
@@ -25,3 +25,28 @@ div.content_center{
 .center{
     text-align: center;
 }
+
+
+
+
+
+
+
+
+#photos{
+    height:110px;
+    width:100%;
+    padding:10px 0;
+    background-color:#fafafa;
+    overflow:auto;
+ }
+#photos div {
+    width:2246px;
+    padding:0 10px;
+ }
+img.photo{
+    border:5px solid #fff;
+    float:left;
+    display:inline;
+    margin-right:10px;
+ }

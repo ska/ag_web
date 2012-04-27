@@ -47,7 +47,7 @@
   </div>
   <div class="field">
     <%= f.label "Titologia casa" %><br />
-    <%= f.collection_select :id_TypeOfHouse, TypeOfHouse.all, :id, :name %>
+    <%= f.collection_select :TypeOfHouse_id, TypeOfHouse.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label "Tipo contratto" %><br />
@@ -55,7 +55,7 @@
   </div>
   <div class="field">
     <%= f.label "Condizioni casa" %><br />
-    <%= f.collection_select :id_Condition, Condition.all, :id, :name %>
+    <%= f.collection_select :Condition_id, Condition.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit "Salva casa" %>

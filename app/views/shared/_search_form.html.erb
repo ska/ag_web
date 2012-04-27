@@ -7,7 +7,7 @@
     <%= label_tag "Contratto" %><br />
     <%= collection_select(:post, :TypeOfContract_id, TypeOfContract.all, :id, :name )%><br />
     <%= label_tag "Tipo casa" %><br />
-    <%= collection_select(:post, :id_TypeOfHouse, TypeOfHouse.all, :id, :name )%><br />
+    <%= collection_select(:post, :TypeOfHouse_id, TypeOfHouse.all, :id, :name )%><br />
     <%= label_tag "Metratura minima" %><br />
     <%= text_field :post, :minimum_sqm, :size => 15 %><br />
     <%= label_tag "Metratura massima" %><br />

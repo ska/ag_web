@@ -12,6 +12,7 @@ two:
 
 
 
+
 # == Schema Information
 #
 # Table name: houses
@@ -31,8 +32,8 @@ two:
 #  year_of_construction :integer
 #  user_id              :integer
 #  TypeOfContract_id    :integer
-#  id_Condition         :integer
-#  id_TypeOfHouse       :integer
+#  Condition_id         :integer
+#  TypeOfHouse_id       :integer
 #  price                :integer
 #
 
